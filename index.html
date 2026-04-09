@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USLang - Ultra-Beginner Friendly Programming Language</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .tagline {
+            color: #764ba2;
+            font-size: 1.1em;
+            font-style: italic;
+        }
+
+        .content {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: #667eea;
+            border-bottom: 3px solid #764ba2;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #764ba2;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .feature-card h4 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .download-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .download-section h2 {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.3);
+        }
+
+        .download-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            margin: 10px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .download-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .code-block {
+            background: #f5f5f5;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background 0.3s;
+        }
+
+        .copy-button:hover {
+            background: #764ba2;
+        }
+
+        .code-block:hover .copy-button {
+            opacity: 1;
+        }
+
+        .examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .example-card {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .example-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .example-card code {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            display: block;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .install-steps {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .install-steps ol {
+            margin-left: 20px;
+        }
+
+        .install-steps li {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .requirements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .requirement-item {
+            background: #f0f4ff;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+
+        .requirement-item strong {
+            color: #667eea;
+        }
+
+        footer {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            color: #666;
+        }
+
+        .quick-start {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .quick-start h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .command-reference {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .command-ref-item {
+            margin: 15px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+        }
+
+        .command-ref-item .cmd {
+            color: #667eea;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            header {
+                padding: 20px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 USLang</h1>
+            <p class="subtitle">Ultra-Beginner Friendly Programming Language</p>
+            <p class="tagline">Learn to code with English-like syntax</p>
+        </header>
+
+        <div class="download-section">
+            <h2>Get Started Now</h2>
+            <p style="margin: 20px 0; font-size: 1.1em;">Download the complete USLang package with automatic installer!</p>
+            <a href="../USLang-v1.0-Complete.zip" download="USLang-v1.0-Complete.zip" class="download-button">📥 Download USLang v1.0 (0.25 MB)</a>
+            <a href="#install" class="download-button">📖 Installation Guide</a>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>What is USLang?</h2>
+                <p>
+                    USLang is a revolutionary programming language designed specifically for absolute beginners. 
+                    Instead of cryptic syntax, USLang uses English-like commands that anyone can understand and write. 
+                    Perfect for learning programming fundamentals without the intimidation factor!
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>✨ Features</h2>
+                <div class="features">
+                    <div class="feature-card">
+                        <h4>English-like Syntax</h4>
+                        <p>Write code that reads like English sentences</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Simple & Clean</h4>
+                        <p>No confusing brackets or semicolons</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Powerful</h4>
+                        <p>Variables, functions, loops, and conditions</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Learn Fast</h4>
+                        <p>Perfect for beginners of all ages</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 id="install">📦 Installation & Setup</h2>
+                
+                <h3>The Easy Way (Recommended)</h3>
+                <p><strong>Just 3 simple steps to get started!</strong></p>
+                
+                <div class="install-steps">
+                    <ol>
+                        <li><strong>Download</strong> - Click the download button above to get <code>USLang-v1.0-Complete.zip</code></li>
+                        <li><strong>Extract</strong> - Right-click the zip file and select "Extract All". Choose any location.</li>
+                        <li><strong>Install</strong> - Open the extracted folder and <strong>double-click <code>standalone-installer.bat</code></strong></li>
+                    </ol>
+                </div>
+
+                <div class="quick-start">
+                    <h4>⚡ After Installation</h4>
+                    <p>Close and reopen PowerShell, then run:</p>
+                    <div class="code-block" style="margin-top: 10px;">
+                        <button class="copy-button" onclick="copyToClipboard('newinstall')">Copy</button>
+                        <pre id="newinstall">us "examples\hello.us"
+us "examples\arithmetic.us"
+us</pre>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 40px; border-top: 1px solid #ddd; padding-top: 20px;">The Advanced Way (Build from Source)</h3>
+                <p>If you want to build USLang yourself:</p>
+                
+                <p><strong>Prerequisites:</strong> Rust must be installed. Download from <a href="https://www.rust-lang.org/tools/install" target="_blank">https://www.rust-lang.org/tools/install</a></p>
+                
+                <div class="code-block">
+                    <button class="copy-button" onclick="copyToClipboard('buildsrc')">Copy</button>
+                    <pre id="buildsrc">cd c:\allpytonfiles\a\uslang
+cargo build --release --target x86_64-pc-windows-gnu
+.\standalone-installer.bat</pre>
+                </div>
+                
+                <p style="margin-top: 15px;">Then restart PowerShell and start using USLang from anywhere!</p>
+            </div>
+
+            <div class="section">
+                <h2 id="examples">📚 Code Examples</h2>
+                <p>Here are some simple USLang programs to get you started:</p>
+
+                <div class="examples">
+                    <div class="example-card">
+                        <h4>Hello World</h4>
+                        <code>Say "Hello".
+Say "World".</code>
+                    </div>
+
+                    <div class="example-card">
+                        <h4>Variables</h4>
+                        <code>Let name be text "Alice".
+Let age be number 25.
+Say name.
+Say age.</code>
+                    </div>
+
+                    <div class="example-card">
+                        <h4>Arithmetic</h4>
+                        <code>Let x be number 5 plus 3.
+Let y be number 10 minus 2.
+Say x.
+Say y.</code>
+                    </div>
+
+                    <div class="example-card">
+                        <h4>Conditionals</h4>
+                        <code>Let age be number 25.
+If age greater than 18 then.
+Say "You are an adult".
+End if.</code>
+                    </div>
+
+                    <div class="example-card">
+                        <h4>Loops</h4>
+                        <code>Let count be number 1.
+Loop until count greater than 5.
+Say count.
+Let count be count plus 1.
+End loop.</code>
+                    </div>
+
+                    <div class="example-card">
+                        <h4>Functions</h4>
+                        <code>Create function greet with name.
+Say "Hello".
+Say name.
+End function.
+
+Use function greet with "Bob".</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>⌨️ Command Reference</h2>
+                <p>Here are the common commands you'll use:</p>
+
+                <div class="command-reference">
+                    <div class="command-ref-item">
+                        <span class="cmd">Say "text".</span> - Print text to screen
+                    </div>
+                    <div class="command-ref-item">
+                        <span class="cmd">Let x be number 5.</span> - Create a number variable
+                    </div>
+                    <div class="command-ref-item">
+                        <span class="cmd">Let x be text "hello".</span> - Create a text variable
+                    </div>
+                    <div class="command-ref-item">
+                        <span class="cmd">If condition then ... End if.</span> - Conditional statement
+                    </div>
+                    <div class="command-ref-item">
+                        <span class="cmd">Loop until condition ... End loop.</span> - Loop until condition
+                    </div>
+                    <div class="command-ref-item">
+                        <span class="cmd">Create function name with params ... End function.</span> - Define function
+                    </div>
+                    <div class="command-ref-item">
+                        <span class="cmd">Use function name with params.</span> - Call function
+                    </div>
+                    <div class="command-ref-item">
+                        <span class="cmd">plus, minus, times, divided by</span> - Arithmetic operators
+                    </div>
+                    <div class="command-ref-item">
+                        <span class="cmd">equals, greater than, less than</span> - Comparison operators
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>📋 Requirements</h2>
+                <div class="requirements">
+                    <div class="requirement-item">
+                        <strong>Windows</strong> - Works on Windows 10/11
+                    </div>
+                    <div class="requirement-item">
+                        <strong>Rust</strong> - For building (optional if using pre-built)
+                    </div>
+                    <div class="requirement-item">
+                        <strong>PowerShell</strong> - Command line interface
+                    </div>
+                    <div class="requirement-item">
+                        <strong>2 GB RAM</strong> - Minimum recommended
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🔧 Useful Commands</h2>
+                <p>Here are some helpful commands you might need:</p>
+
+                <div class="code-block">
+                    <button class="copy-button" onclick="copyToClipboard('cmds')">Copy All</button>
+                    <pre id="cmds"># Navigate to USLang directory
+cd c:\allpytonfiles\a\uslang
+
+# Build from source
+cargo build --release --target x86_64-pc-windows-gnu
+
+# Install to system
+.\install.bat
+
+# Run a specific example
+us "C:\allpytonfiles\a\uslang\examples\hello.us"
+
+# Interactive REPL mode
+us
+
+# View all examples
+dir c:\allpytonfiles\a\uslang\examples
+
+# View language documentation
+notepad c:\allpytonfiles\a\uslang\LANGUAGE_SPEC.md
+
+# View quick reference
+notepad c:\allpytonfiles\a\uslang\QUICK_REFERENCE.md
+
+# View installation guide
+notepad c:\allpytonfiles\a\uslang\GUIDE.md</pre>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>📖 Documentation</h2>
+                <p>Full documentation is included with USLang:</p>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li><strong>README.md</strong> - Overview and quick start</li>
+                    <li><strong>LANGUAGE_SPEC.md</strong> - Complete language specification</li>
+                    <li><strong>QUICK_REFERENCE.md</strong> - Quick syntax reference</li>
+                    <li><strong>GUIDE.md</strong> - Comprehensive user guide</li>
+                    <li><strong>BUILD.md</strong> - Build and installation instructions</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>❓ Troubleshooting</h2>
+                
+                <h3>Command not found</h3>
+                <p>If "us" is not recognized, open a new PowerShell window. The system PATH update takes effect after reopening.</p>
+                
+                <h3>Build failed</h3>
+                <p>Ensure you have Rust installed and the GNU toolchain:</p>
+                <div class="code-block">
+                    <button class="copy-button" onclick="copyToClipboard('fix1')">Copy</button>
+                    <pre id="fix1">rustup target add x86_64-pc-windows-gnu</pre>
+                </div>
+
+                <h3>Permission denied during install</h3>
+                <p>Right-click install.bat and select "Run as administrator".</p>
+            </div>
+        </div>
+
+        <footer>
+            <h3>USLang - Making Programming Fun for Everyone</h3>
+            <p style="margin-top: 15px;">Version 1.0 | Created with ❤️ for beginners</p>
+            <p style="margin-top: 15px; font-size: 0.9em; color: #999;">
+                USLang is an open-source project designed to make programming accessible to everyone.
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = '✓ Copied!';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                }, 2000);
+            }).catch(err => {
+                alert('Failed to copy: ' + err);
+            });
+        }
+
+        // Add keyboard shortcut for copy (Ctrl+C on highlighted code)
+        document.querySelectorAll('.code-block').forEach(block => {
+            block.addEventListener('click', function() {
+                const pre = this.querySelector('pre');
+                if (pre) {
+                    const range = document.createRange();
+                    range.selectNodeContents(pre);
+                    window.getSelection().removeAllRanges();
+                    window.getSelection().addRange(range);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
