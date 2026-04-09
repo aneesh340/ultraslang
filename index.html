@@ -1,41 +1,111 @@
 ```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>USLang Download</title>
-    <style>
-        body {
-            font-family: Arial;
-            text-align: center;
-            margin-top: 100px;
-            background: #667eea;
-            color: white;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USLang</title>
 
-        button {
-            padding: 15px 30px;
-            font-size: 18px;
-            border: none;
-            border-radius: 30px;
-            background: white;
-            color: #667eea;
-            cursor: pointer;
-        }
+<style>
+body {
+    font-family: Arial;
+    background: linear-gradient(135deg,#667eea,#764ba2);
+    margin: 0;
+    color: #333;
+}
 
-        button:hover {
-            background: #ddd;
-        }
-    </style>
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+header {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #667eea;
+}
+
+.download-section {
+    background: linear-gradient(135deg,#667eea,#764ba2);
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.download-button {
+    display: inline-block;
+    background: white;
+    color: #667eea;
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.code-block {
+    background: #f5f5f5;
+    padding: 10px;
+    margin-top: 10px;
+    font-family: monospace;
+}
+</style>
 </head>
+
 <body>
 
-<h1>🚀 USLang</h1>
+<div class="container">
 
-<button onclick="downloadZip()">Download USLang</button>
+<header>
+    <h1>🚀 USLang</h1>
+    <p>Ultra Beginner Friendly Programming Language</p>
+</header>
+
+<div class="download-section">
+    <h2>Download</h2>
+
+    <!-- ✅ WORKING DOWNLOAD BUTTON -->
+    <button onclick="downloadZip()" class="download-button">
+        📥 Download USLang v1.0
+    </button>
+</div>
+
+<div class="content">
+    <h2>Example Code</h2>
+
+    <div class="code-block">
+        Say "Hello".
+        Say "World".
+    </div>
+
+    <h2>Variables</h2>
+
+    <div class="code-block">
+        Let name be text "Aneesh".
+        Say name.
+    </div>
+</div>
+
+</div>
 
 <script>
 function downloadZip() {
-    window.location.href = "https://aneesh340.github.io/utltraslang/USLang-v1.0-Complete.zip";
+    window.location.href = "https://github.com/aneesh340/utltraslang/releases/download/v1.0/USLang-v1.0-Complete.zip";
 }
 </script>
 
