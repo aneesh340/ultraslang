@@ -1,0 +1,6 @@
+Let age be number 20.
+If age is greater than 17.
+Say "You are an adult".
+Otherwise.
+Say "You are a minor".
+End if.

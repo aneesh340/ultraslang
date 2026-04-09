@@ -1,0 +1,196 @@
+======================================================================
+                    USLANG GRAMMAR DEFINITION
+                       (grammar.dot.pxt)
+======================================================================
+
+This document defines all valid syntax rules for USLang programs.
+All rules are case-sensitive and follow strict patterns.
+
+======================================================================
+1. BASIC STRUCTURE
+======================================================================
+
+Program := Statement*
+Statement := VarDeclaration | PrintStatement | FunctionDef | 
+             FunctionCall | IfStatement | LoopStatement | Comment
+
+======================================================================
+2. VARIABLES
+======================================================================
+
+VarDeclaration := "Let" identifier "be" VarType value "."
+
+VarType := "number" | "text"
+
+identifier := [a-zA-Z_][a-zA-Z0-9_]*
+
+value := NumberValue | TextValue
+
+NumberValue := integer | float | arithmetic_expression
+
+TextValue := "\"" string_content "\""
+
+string_content := any characters except unescaped quotes
+
+arithmetic_expression := NumberValue (Operator NumberValue)*
+
+Operator := "plus" | "minus" | "times" | "divided" "by"
+
+======================================================================
+3. OUTPUT (PRINT STATEMENTS)
+======================================================================
+
+PrintStatement := "Say" PrintContent "."
+
+PrintContent := TextValue | identifier
+
+======================================================================
+4. FUNCTIONS
+======================================================================
+
+FunctionDef := "Create" "function" function_name 
+               ("with" parameter_list)? "."
+               Statement*
+               "End" "function" "."
+
+function_name := identifier
+
+parameter_list := identifier ("," identifier)*
+
+FunctionCall := "Use" "function" function_name 
+                ("with" argument_list)? "."
+
+argument_list := value ("," value)*
+
+======================================================================
+5. CONDITIONALS
+======================================================================
+
+IfStatement := IfBlock (ElseBlock)?
+
+IfBlock := "If" condition "."
+           Statement*
+           "End" "if" "."
+
+condition := simple_comparison | complex_condition
+
+simple_comparison := identifier ComparisonOp value
+
+ComparisonOp := "is" "greater" "than" | 
+                "is" "less" "than" | 
+                "is" "equal" "to" | 
+                "is" "not" "equal" "to" | 
+                "is" "greater" "or" "equal" "to" | 
+                "is" "less" "or" "equal" "to"
+
+complex_condition := simple_comparison LogicalOp condition
+
+LogicalOp := "and" | "or"
+
+ElseBlock := "Otherwise" "."
+             Statement*
+             "End" "if" "."
+
+======================================================================
+6. LOOPS
+======================================================================
+
+LoopStatement := WhileLoop | ForLoop
+
+WhileLoop := "Repeat" "while" condition "."
+             Statement*
+             "End" "repeat" "."
+
+ForLoop := "Count" "from" integer "to" integer "."
+           Statement*
+           "End" "count" "."
+
+======================================================================
+7. INCREMENTS/DECREMENTS
+======================================================================
+
+IncDec := Increment | Decrement
+
+Increment := "Increase" identifier "by" integer "."
+
+Decrement := "Decrease" identifier "by" integer "."
+
+======================================================================
+8. COMMENTS
+======================================================================
+
+Comment := "Note" "," comment_text "."
+
+comment_text := any text until period
+
+======================================================================
+9. LEXICAL RULES
+======================================================================
+
+Allowed Punctuation:
+  . (period) - ends statements
+  , (comma) - separates items and precedes comments
+  " (quote) - delimits strings
+
+Forbidden:
+  ( ) [ ] { } ; : + - * / =
+
+Keywords (Reserved):
+  Let, be, number, text, Say, Create, function, Use, with,
+  If, Otherwise, End, Repeat, while, plus, minus, times,
+  divided, by, is, greater, than, less, equal, to, not,
+  or, equal, to, and, Count, from, Increase, Decrease,
+  Note
+
+Identifiers:
+  Start with [a-zA-Z_]
+  Continue with [a-zA-Z0-9_]
+  Case-sensitive
+
+Numbers:
+  Integer: [0-9]+
+  Float: [0-9]+.[0-9]+
+
+Strings:
+  Enclosed in double quotes
+  Cannot contain unescaped quotes
+
+======================================================================
+10. EXAMPLE VALID PROGRAMS
+======================================================================
+
+Program 1 - Simple Output:
+  Let name be text "World".
+  Say "Hello".
+  Say name.
+
+Program 2 - Arithmetic:
+  Let x be number 5 plus 3.
+  Say x.
+
+Program 3 - Conditional:
+  Let age be number 18.
+  If age is greater than 17.
+  Say "Adult".
+  Otherwise.
+  Say "Minor".
+  End if.
+
+Program 4 - Loop:
+  Let counter be number 1.
+  Repeat while counter is less than 5.
+  Say counter.
+  Increase counter by 1.
+  End repeat.
+
+Program 5 - Function:
+  Create function greet with name.
+  Say "Hello".
+  Say name.
+  End function.
+  
+  Use function greet with "Alice".
+
+======================================================================
+END OF GRAMMAR DEFINITION
+======================================================================

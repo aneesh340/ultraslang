@@ -1,0 +1,5 @@
+Let counter be number 1.
+Repeat while counter is less than 5.
+Say counter.
+Increase counter by 1.
+End repeat.

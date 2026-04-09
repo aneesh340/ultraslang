@@ -1,0 +1,6 @@
+Create function greet with name.
+Say "Hello".
+Say name.
+End function.
+
+Use function greet with "Alice".
