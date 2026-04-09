@@ -1,47 +1,43 @@
 ```html
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>USLang</title>
+    <title>USLang Download</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 100px;
+            background: #667eea;
+            color: white;
+        }
 
-<style>
-body {
-    font-family: Arial;
-    background: linear-gradient(135deg,#667eea,#764ba2);
-    color:#333;
-    text-align:center;
-}
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 30px;
+            background: white;
+            color: #667eea;
+            cursor: pointer;
+        }
 
-.container {
-    padding:40px;
-}
-
-.download-button {
-    display:inline-block;
-    background:white;
-    color:#667eea;
-    padding:15px 30px;
-    border-radius:30px;
-    text-decoration:none;
-    font-weight:bold;
-    margin-top:20px;
-}
-</style>
+        button:hover {
+            background: #ddd;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
-    <h1>🚀 USLang</h1>
-    <p>Ultra Beginner Friendly Programming Language</p>
+<h1>🚀 USLang</h1>
 
-    <!-- ✅ FIXED DOWNLOAD BUTTON -->
-    <a href="USLang-v1.0-Complete.zip" download class="download-button">
-        📥 Download USLang
-    </a>
-</div>
+<button onclick="downloadZip()">Download USLang</button>
+
+<script>
+function downloadZip() {
+    window.location.href = "https://aneesh340.github.io/utltraslang/USLang-v1.0-Complete.zip";
+}
+</script>
 
 </body>
 </html>
